@@ -1,0 +1,164 @@
+/* ============================================================
+   Superadmin — Smoothness layer
+   Skeleton states, entrance animations, and interaction polish.
+   Loaded AFTER main.css / style.css in navigation.blade.php.
+   ============================================================ */
+
+/* ---------- Reduced motion ---------- */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+/* ---------- Entrance keyframes ---------- */
+@keyframes saFadeUp {
+  from { opacity: 0; transform: translateY(14px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes saFadeIn {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}
+
+@keyframes saZoomIn {
+  from { opacity: 0; transform: scale(.96); }
+  to   { opacity: 1; transform: scale(1); }
+}
+
+/* Utility: apply to a single element */
+.entrance {
+  animation: saFadeUp .38s cubic-bezier(.22,.61,.36,1) both;
+}
+
+/* Utility: cascade animation to direct children with increasing delay.
+   Usage: <div class="stagger"> ...children... </div> */
+.stagger > * {
+  opacity: 0;
+  animation: saFadeUp .38s cubic-bezier(.22,.61,.36,1) both;
+}
+.stagger > *:nth-child(1) { animation-delay: .03s; }
+.stagger > *:nth-child(2) { animation-delay: .07s; }
+.stagger > *:nth-child(3) { animation-delay: .11s; }
+.stagger > *:nth-child(4) { animation-delay: .15s; }
+.stagger > *:nth-child(5) { animation-delay: .19s; }
+.stagger > *:nth-child(6) { animation-delay: .23s; }
+.stagger > *:nth-child(7) { animation-delay: .27s; }
+.stagger > *:nth-child(8) { animation-delay: .31s; }
+.stagger > *:nth-child(n+9) { animation-delay: .35s; }
+
+/* Main content fades up slightly on each navigation */
+.main_content {
+  animation: saFadeUp .3s cubic-bezier(.22,.61,.36,1) both;
+}
+
+/* ---------- Skeleton primitives ---------- */
+.sk {
+  position: relative;
+  overflow: hidden;
+  background: #eef1f6;
+  border-radius: 6px;
+}
+.sk::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  transform: translateX(-100%);
+  background: linear-gradient(90deg, transparent, rgba(255,255,255,.7), transparent);
+  animation: skShimmer 1.4s infinite;
+}
+@keyframes skShimmer {
+  100% { transform: translateX(100%); }
+}
+
+.sk-avatar {
+  width: 44px; height: 44px; border-radius: 12px;
+  background: #eef1f6; position: relative; overflow: hidden; flex-shrink: 0;
+}
+.sk-avatar::after {
+  content: "";
+  position: absolute; inset: 0; transform: translateX(-100%);
+  background: linear-gradient(90deg, transparent, rgba(255,255,255,.7), transparent);
+  animation: skShimmer 1.4s infinite;
+}
+
+.sk-line { height: 12px; border-radius: 6px; }
+.sk-line-sm { height: 9px; border-radius: 6px; }
+
+/* ---------- Skeleton layouts (used by partial + JS surfaces) ---------- */
+
+/* Stat-card grid */
+.sk-card-grid { display: flex; flex-wrap: wrap; gap: 16px; margin-bottom: 24px; }
+.sk-card {
+  flex: 1 1 150px;
+  display: flex; align-items: center; gap: 14px;
+  padding: 18px 20px;
+  background: #fff; border: 1px solid #eef1f6; border-radius: 14px;
+  box-shadow: 0 2px 12px rgba(15,23,42,.04);
+}
+.sk-card .sk-avatar { width: 46px; height: 46px; border-radius: 12px; }
+.sk-card .sk-body { flex: 1; }
+.sk-card .sk-line { width: 60%; margin-bottom: 8px; }
+.sk-card .sk-line-sm { width: 40%; }
+
+/* Table skeleton */
+.sk-table-wrap { padding: 0 24px; }
+.sk-table-row {
+  display: flex; align-items: center; gap: 16px;
+  padding: 17px 0; border-bottom: 1px solid #f1f5f9;
+}
+.sk-table-row:last-child { border-bottom: none; }
+.sk-table-row .sk-cell-1 { width: 40%; }
+.sk-table-row .sk-cell-2 { width: 22%; }
+.sk-table-row .sk-cell-3 { width: 15%; }
+.sk-table-row .sk-cell-4 { width: 13%; }
+
+/* Vertical list skeleton (side panels) */
+.sk-list { display: flex; flex-direction: column; gap: 14px; }
+.sk-list-item { display: flex; align-items: center; gap: 12px; }
+.sk-list-item .sk-body { flex: 1; }
+.sk-list-item .sk-line { width: 70%; margin-bottom: 7px; }
+.sk-list-item .sk-line-sm { width: 45%; }
+
+/* ---------- Interaction polish ---------- */
+
+/* Dropdown reveal */
+.dropdown-menu {
+  animation: saZoomIn .16s ease both;
+  transform-origin: top right;
+}
+
+/* Consistent button press feedback (design language from sa-* pages) */
+button, .btn, .sa-sl-add, .sa-as-btn, .sa-al-back, .sa-ct-back, .sa-sl-btn,
+.sa-ct-btn, .sa-al-actions-btn, .sa-sl-actions-btn, .sa-ct-action-btn,
+.sa-sl-modal-btn, .sa-ct-modal-btn, .sa-al-modal-btn, .sa-as-status-btn {
+  transition: transform .12s ease, background-color .15s ease, border-color .15s ease, box-shadow .15s ease, color .15s ease;
+}
+button:active, .btn:active, .sa-sl-add:active, .sa-as-btn:active,
+.sa-al-actions-btn:active, .sa-sl-actions-btn:active, .sa-ct-action-btn:active {
+  transform: scale(.96);
+}
+
+/* Card hover lift (already on stat cards; extend to main cards) */
+.sa-sl-card, .sa-al-card, .sa-ct-card, .sa-as-card {
+  transition: box-shadow .18s ease, transform .18s ease;
+}
+.sa-sl-card:hover, .sa-al-card:hover, .sa-ct-card:hover {
+  box-shadow: 0 10px 32px rgba(15,23,42,.1);
+}
+
+/* Table row hover polish */
+table tbody tr {
+  transition: background-color .12s ease;
+}
+
+/* Fade in modals that are custom (non-bootstrap) */
+.sa-sl-modal-overlay, .sa-ct-modal-overlay, .sa-al-modal-overlay {
+  animation: saFadeIn .15s ease both;
+}
+.sa-sl-modal, .sa-ct-modal, .sa-al-modal {
+  animation: saZoomIn .2s cubic-bezier(.22,.61,.36,1) both;
+}

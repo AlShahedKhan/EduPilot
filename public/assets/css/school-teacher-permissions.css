@@ -1,0 +1,53 @@
+.school-permission-page {
+    --permission-border: #e4eaf1;
+    --permission-text: #10213d;
+    --permission-muted: #697386;
+    --permission-primary: #0b7bab;
+}
+.school-permission-page * { min-width: 0; }
+.school-permission-page__summary { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 16px; margin-bottom: 22px; }
+.school-permission-page__summary-card { display: flex; align-items: center; gap: 13px; min-height: 88px; padding: 17px; border: 1px solid var(--permission-border); border-radius: 12px; background: #fff; }
+.school-permission-page__summary-card > span { display: grid; width: 44px; height: 44px; place-items: center; border-radius: 11px; background: #eaf5fb; color: var(--permission-primary); font-size: 20px; }
+.school-permission-page__summary-card small, .school-permission-page__summary-card strong { display: block; }
+.school-permission-page__summary-card small { color: var(--permission-muted); }
+.school-permission-page__summary-card strong { margin-top: 3px; color: var(--permission-text); font-size: 23px; }
+.school-permission-page__panel { overflow: visible; }
+.school-permission-page__filters { display: grid; grid-template-columns: repeat(5, minmax(130px, 1fr)) auto; align-items: end; gap: 12px; padding: 20px; border-bottom: 1px solid var(--permission-border); }
+.school-permission-page__filters .form-control, .school-permission-page__filters .form-select, .school-permission-page__filter-actions .eBtn { min-height: 44px; }
+.school-permission-page__filter-actions { display: flex; gap: 8px; }
+.school-permission-page__empty { display: grid; justify-items: center; gap: 9px; padding: 62px 20px; color: var(--permission-muted); text-align: center; }
+.school-permission-page__empty > i { color: var(--permission-primary); font-size: 42px; }
+.school-permission-page__desktop { padding: 8px 20px 0; }
+.school-permission-page__desktop th, .school-permission-page__desktop td { vertical-align: middle; }
+.school-permission-page__switch { display: inline-flex; align-items: center; min-height: 44px; cursor: pointer; }
+.school-permission-page__switch input { position: absolute; opacity: 0; pointer-events: none; }
+.school-permission-page__switch > span:not(.visually-hidden) { position: relative; width: 48px; height: 26px; border-radius: 999px; background: #cbd5e1; transition: background .2s; }
+.school-permission-page__switch > span:not(.visually-hidden)::after { position: absolute; top: 3px; left: 3px; width: 20px; height: 20px; border-radius: 50%; background: #fff; box-shadow: 0 1px 4px rgba(0,0,0,.2); content: ""; transition: transform .2s; }
+.school-permission-page__switch input:checked + span { background: var(--permission-primary); }
+.school-permission-page__switch input:checked + span::after { transform: translateX(22px); }
+.school-permission-page__switch input:disabled + span { opacity: .5; cursor: not-allowed; }
+.school-permission-page__switch input:focus-visible + span { outline: 3px solid rgba(11,123,171,.3); outline-offset: 2px; }
+.school-permission-page__mobile { padding: 16px; }
+.school-permission-page__card { padding: 16px; border: 1px solid var(--permission-border); border-radius: 12px; }
+.school-permission-page__card + .school-permission-page__card { margin-top: 12px; }
+.school-permission-page__card header { display: flex; justify-content: space-between; gap: 10px; padding-bottom: 12px; border-bottom: 1px solid var(--permission-border); }
+.school-permission-page__card header strong, .school-permission-page__card header span { display: block; overflow-wrap: anywhere; }
+.school-permission-page__card header div span { margin-top: 3px; color: var(--permission-muted); font-size: 13px; }
+.school-permission-page__mobile-row { display: flex; align-items: center; justify-content: space-between; min-height: 52px; border-bottom: 1px solid #eef1f5; }
+.school-permission-page__footer { display: flex; align-items: center; justify-content: space-between; gap: 15px; padding: 18px 20px; border-top: 1px solid var(--permission-border); }
+.school-permission-page :focus-visible { outline: 3px solid rgba(11,123,171,.3); outline-offset: 2px; }
+@media (max-width: 1199.98px) {
+    .school-permission-page__summary { gap: 12px; }
+    .school-permission-page__filters { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+}
+@media (max-width: 767.98px) {
+    .school-permission-page__summary { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+    .school-permission-page__filters { grid-template-columns: 1fr; }
+    .school-permission-page__filter-actions, .school-permission-page__filter-actions .eBtn { width: 100%; }
+    .school-permission-page__footer { align-items: stretch; flex-direction: column; }
+    .school-permission-page__footer .btn-form { min-height: 44px; }
+}
+@media (max-width: 575.98px) {
+    .school-permission-page__summary { grid-template-columns: 1fr; }
+    .school-permission-page__card header { flex-direction: column; }
+}

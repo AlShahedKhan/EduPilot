@@ -1,0 +1,69 @@
+.school-room-page { color: #1f2937; display: grid; gap: 24px; min-width: 0; }
+.school-room-page *, .school-room-form * { box-sizing: border-box; }
+.school-room-page__header { align-items: center; display: flex; gap: 24px; justify-content: space-between; }
+.school-room-page__header h1 { color: #111827; font-size: clamp(1.5rem, 2.5vw, 2rem); margin: 2px 0 6px; }
+.school-room-page__header p { margin: 0; }
+.school-room-page__eyebrow { color: #0f766e; font-size: .75rem; font-weight: 700; letter-spacing: .08em; text-transform: uppercase; }
+.school-room-page__primary, .school-room-page__filter-button, .school-room-form button { align-items: center; background: #0f766e; border: 1px solid #0f766e; border-radius: 10px; color: #fff; display: inline-flex; font-weight: 700; gap: 8px; justify-content: center; min-height: 44px; padding: 10px 16px; }
+.school-room-page__summary { display: grid; gap: 16px; grid-template-columns: repeat(4, minmax(0, 1fr)); }
+.school-room-page__summary article { background: #fff; border: 1px solid #e5e7eb; border-radius: 14px; box-shadow: 0 6px 20px rgba(15, 23, 42, .05); display: grid; gap: 8px; padding: 18px; }
+.school-room-page__summary span { color: #64748b; font-size: .875rem; }
+.school-room-page__summary strong { color: #0f172a; font-size: 1.75rem; }
+.school-room-page__panel { background: #fff; border: 1px solid #e5e7eb; border-radius: 16px; min-width: 0; padding: 20px; }
+.school-room-page__filters { align-items: end; display: grid; gap: 12px; grid-template-columns: minmax(220px, 2fr) minmax(170px, 1fr) auto auto auto; margin-bottom: 20px; }
+.school-room-page__filters label, .school-room-form label { display: grid; font-size: .82rem; font-weight: 700; gap: 6px; }
+.school-room-page__filters input, .school-room-page__filters select, .school-room-form input { background: #fff; border: 1px solid #cbd5e1; border-radius: 9px; color: #111827; min-height: 44px; padding: 10px 12px; width: 100%; }
+.school-room-page__reset { align-items: center; border: 1px solid #cbd5e1; border-radius: 9px; color: #334155; display: inline-flex; justify-content: center; min-height: 44px; padding: 10px 14px; }
+.school-room-page__exports { display: flex; gap: 8px; justify-self: end; }
+.school-room-page__exports button { background: #f0fdfa; border: 1px solid #99f6e4; border-radius: 9px; color: #0f766e; min-height: 44px; padding: 8px 12px; }
+.school-room-page button:focus-visible, .school-room-page a:focus-visible, .school-room-page input:focus-visible, .school-room-page select:focus-visible, .school-room-form button:focus-visible, .school-room-form input:focus-visible { outline: 3px solid rgba(13, 148, 136, .35); outline-offset: 2px; }
+.school-room-page__desktop { overflow-x: auto; }
+.school-room-page table { border-collapse: collapse; min-width: 650px; width: 100%; }
+.school-room-page th, .school-room-page td { border-bottom: 1px solid #e5e7eb; padding: 14px 12px; text-align: left; }
+.school-room-page th { color: #64748b; font-size: .75rem; text-transform: uppercase; }
+.school-room-page__actions-heading { text-align: right !important; }
+.school-room-page__status { border-radius: 999px; display: inline-flex; font-size: .78rem; font-weight: 700; padding: 5px 9px; }
+.school-room-page__status.is-used { background: #fff7ed; color: #c2410c; }
+.school-room-page__status.is-available { background: #ecfdf5; color: #047857; }
+.school-room-page__actions, .school-room-page__card-actions { align-items: center; display: flex; gap: 8px; justify-content: flex-end; }
+.school-room-page__actions form, .school-room-page__card-actions form { margin: 0; }
+.school-room-page__actions button, .school-room-page__card-actions button { background: #fff; border: 1px solid #cbd5e1; border-radius: 8px; color: #334155; min-height: 44px; padding: 8px 12px; }
+.school-room-page__actions .is-danger, .school-room-page__card-actions .is-danger { border-color: #fecaca; color: #b91c1c; }
+.school-room-page__read-only { color: #64748b; font-size: .82rem; }
+.school-room-page__mobile { display: none; }
+.school-room-page__empty { align-items: center; display: flex; flex-direction: column; padding: 42px 16px; text-align: center; }
+.school-room-page__empty h2 { font-size: 1.15rem; margin: 12px 0 4px; }
+.school-room-page__empty p { color: #64748b; margin: 0; }
+.school-room-page__pagination { margin-top: 18px; }
+.school-room-page__print { display: none; }
+.school-room-form form { display: grid; gap: 18px; }
+.school-room-form small { color: #b91c1c; font-size: .8rem; }
+
+@media (max-width: 1200px) { .school-room-page__filters { grid-template-columns: repeat(2, minmax(0, 1fr)); } .school-room-page__exports { justify-self: start; } }
+@media (max-width: 768px) {
+  .school-room-page__header { align-items: stretch; flex-direction: column; }
+  .school-room-page__summary { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .school-room-page__filters { grid-template-columns: 1fr; }
+  .school-room-page__desktop { display: none; }
+  .school-room-page__mobile { display: grid; gap: 12px; }
+  .school-room-page__card { border: 1px solid #e5e7eb; border-radius: 12px; display: grid; gap: 14px; padding: 16px; }
+  .school-room-page__card header { align-items: start; display: flex; gap: 10px; justify-content: space-between; }
+  .school-room-page__card h2 { font-size: 1.05rem; margin: 0; overflow-wrap: anywhere; }
+  .school-room-page__card dl { margin: 0; }
+  .school-room-page__card dl div { background: #f8fafc; border-radius: 9px; padding: 10px; }
+  .school-room-page__card dt { color: #64748b; font-size: .75rem; }
+  .school-room-page__card dd { font-weight: 700; margin: 3px 0 0; }
+}
+@media (max-width: 576px) {
+  .school-room-page { gap: 16px; }
+  .school-room-page__summary { grid-template-columns: 1fr; }
+  .school-room-page__panel { padding: 14px; }
+  .school-room-page__primary, .school-room-page__exports, .school-room-page__exports button { width: 100%; }
+  .school-room-page__card-actions { align-items: stretch; display: grid; grid-template-columns: 1fr 1fr; }
+  .school-room-page__card-actions form, .school-room-page__card-actions button { width: 100%; }
+}
+@media print {
+  body * { visibility: hidden; }
+  .school-room-page__print, .school-room-page__print * { visibility: visible; }
+  .school-room-page__print { display: block; inset: 0; padding: 20px; position: absolute; width: 100%; }
+}

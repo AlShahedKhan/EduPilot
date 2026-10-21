@@ -1,0 +1,126 @@
+.faculty-carousel {
+    --faculty-gap: 1.5rem;
+    --faculty-visible: 1;
+}
+
+.faculty-carousel-toolbar {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    gap: 1rem;
+    margin-bottom: 1rem;
+}
+
+.faculty-carousel-status {
+    color: #64748b;
+    font-size: 0.75rem;
+    font-weight: 700;
+    margin: 0;
+}
+
+.faculty-carousel-actions {
+    display: flex;
+    gap: 0.5rem;
+}
+
+.faculty-carousel-button {
+    align-items: center;
+    background: #ffffff;
+    border: 1px solid #cbd5e1;
+    border-radius: 0.75rem;
+    color: #075985;
+    display: inline-flex;
+    height: 2.5rem;
+    justify-content: center;
+    transition: background-color 180ms ease, border-color 180ms ease, color 180ms ease;
+    width: 2.5rem;
+}
+
+.faculty-carousel-button:hover,
+.faculty-carousel-button:focus-visible {
+    background: #f0f7ff;
+    border-color: #0284c7;
+    color: #0a3754;
+    outline: none;
+}
+
+.faculty-carousel-viewport {
+    overflow: hidden;
+    perspective: 1200px;
+}
+
+.faculty-carousel-viewport:focus-visible {
+    border-radius: 0.75rem;
+    outline: 2px solid #0284c7;
+    outline-offset: 4px;
+}
+
+.faculty-carousel-track {
+    display: flex;
+    gap: var(--faculty-gap);
+    transform: translate3d(0, 0, 0);
+    will-change: transform;
+}
+
+.faculty-carousel-slide {
+    flex: 0 0 calc((100% - ((var(--faculty-visible) - 1) * var(--faculty-gap))) / var(--faculty-visible));
+    min-width: 0;
+    transform-style: preserve-3d;
+}
+
+.faculty-card {
+    height: 100%;
+    transition: box-shadow 250ms ease, transform 250ms ease;
+}
+
+.faculty-card:hover {
+    box-shadow: 0 20px 40px -15px rgba(3, 105, 161, 0.15);
+    transform: translateY(-4px);
+}
+
+.faculty-carousel-slide.is-page-turning-forward {
+    animation: faculty-page-forward 560ms cubic-bezier(0.4, 0, 0.2, 1);
+    transform-origin: left center;
+}
+
+.faculty-carousel-slide.is-page-turning-backward {
+    animation: faculty-page-backward 560ms cubic-bezier(0.4, 0, 0.2, 1);
+    transform-origin: right center;
+}
+
+@keyframes faculty-page-forward {
+    0% { opacity: 1; transform: rotateY(0deg); }
+    55% { opacity: 0.58; transform: rotateY(-62deg); }
+    100% { opacity: 0.2; transform: rotateY(-86deg); }
+}
+
+@keyframes faculty-page-backward {
+    0% { opacity: 0.2; transform: rotateY(86deg); }
+    45% { opacity: 0.58; transform: rotateY(42deg); }
+    100% { opacity: 1; transform: rotateY(0deg); }
+}
+
+@media (min-width: 768px) {
+    .faculty-carousel {
+        --faculty-visible: 2;
+    }
+}
+
+@media (min-width: 1024px) {
+    .faculty-carousel {
+        --faculty-visible: 4;
+    }
+
+    .testimonial-carousel {
+        --faculty-visible: 3;
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .faculty-carousel-track,
+    .faculty-carousel-slide,
+    .faculty-card {
+        animation: none !important;
+        transition: none !important;
+    }
+}
